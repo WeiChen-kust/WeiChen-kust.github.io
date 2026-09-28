@@ -1,53 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wei Chen | AI Researcher & Python Developer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wei Chen — AI researcher and Python developer working on multimodal AI, NLP, knowledge graphs, neuro-symbolic reasoning, automation, web scraping, and data workflows." />
+  <title>Wei Chen | AI Researcher & Python Developer</title>
+
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --surface:#ffffff;
+      --surface-soft:#eef4ff;
+      --text:#182230;
+      --muted:#607086;
+      --line:#dfe7f2;
+      --primary:#2557d6;
+      --primary-2:#7447e8;
+      --shadow:0 18px 50px rgba(31, 53, 84, .10);
+      --radius:22px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 8% 6%, rgba(37,87,214,.10), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(116,71,232,.10), transparent 28%),
+        var(--bg);
+      font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .wrap{width:min(var(--max), calc(100% - 40px));margin:0 auto;}
+
+    .nav-shell{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(247,249,252,.82);
+      border-bottom:1px solid rgba(223,231,242,.75);
+    }
+
+    nav{
+      height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:-.02em;
+      font-size:1.15rem;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-size:.95rem;
+      color:#3f4e62;
+    }
+
+    .nav-links a:hover{color:var(--primary);}
+    .nav-cta{
+      padding:10px 15px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      color:#fff!important;
+      font-weight:700;
+      box-shadow:0 8px 24px rgba(37,87,214,.20);
+    }
+
+    .hero{
+      min-height:680px;
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      align-items:center;
+      gap:60px;
+      padding:90px 0 70px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 12px;
+      border:1px solid #cfdbef;
+      background:rgba(255,255,255,.78);
+      border-radius:999px;
+      color:#42536a;
+      font-size:.9rem;
+      font-weight:700;
+    }
+
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      box-shadow:0 0 0 5px rgba(37,87,214,.08);
+    }
+
+    h1{
+      margin:24px 0 18px;
+      font-size:clamp(3.1rem, 7vw, 6.2rem);
+      line-height:.98;
+      letter-spacing:-.055em;
+    }
+
+    .gradient-text{
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:0;
+      color:var(--muted);
+      font-size:1.16rem;
+    }
+
+    .hero-actions{
+      margin-top:30px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:12px;
+      font-weight:800;
+      border:1px solid var(--line);
+      background:#fff;
+      transition:.18s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(31,53,84,.10);}
+    .btn-primary{
+      border:0;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    }
+
+    .hero-card{
+      position:relative;
+      background:linear-gradient(160deg,#fff,#f5f8ff);
+      border:1px solid #dbe5f3;
+      box-shadow:var(--shadow);
+      border-radius:32px;
+      padding:32px;
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:180px;height:180px;
+      border-radius:50%;
+      right:-60px;top:-60px;
+      background:linear-gradient(135deg,rgba(37,87,214,.18),rgba(116,71,232,.16));
+    }
+
+    .avatar{
+      width:112px;height:112px;
+      border-radius:28px;
+      display:grid;
+      place-items:center;
+      font-size:2.1rem;
+      font-weight:900;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      box-shadow:0 16px 36px rgba(37,87,214,.24);
+      margin-bottom:26px;
+    }
+
+    .hero-card h2{margin:0 0 8px;font-size:1.55rem;letter-spacing:-.03em;}
+    .hero-card .role{color:var(--muted);margin:0 0 22px;}
+    .mini-list{
+      display:grid;
+      gap:11px;
+      padding:0;margin:0;
+      list-style:none;
+      color:#405067;
+      font-size:.95rem;
+    }
+    .mini-list li{display:flex;gap:10px;align-items:flex-start;}
+    .mini-list span{
+      margin-top:8px;
+      width:6px;height:6px;border-radius:50%;
+      background:var(--primary);
+      flex:0 0 auto;
+    }
+
+    section{padding:86px 0;}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      margin-bottom:34px;
+    }
+    .section-kicker{
+      color:var(--primary);
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:.78rem;
+      font-weight:900;
+    }
+    h2.section-title{
+      margin:8px 0 0;
+      font-size:clamp(2rem,4vw,3.2rem);
+      letter-spacing:-.04em;
+      line-height:1.05;
+    }
+    .section-note{max-width:560px;color:var(--muted);}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:0 10px 30px rgba(31,53,84,.05);
+    }
+
+    .research-card{grid-column:span 3;min-height:210px;}
+    .research-card h3{margin:18px 0 8px;font-size:1.12rem;}
+    .research-card p{margin:0;color:var(--muted);font-size:.95rem;}
+    .icon{
+      width:44px;height:44px;
+      border-radius:14px;
+      display:grid;place-items:center;
+      background:var(--surface-soft);
+      color:var(--primary);
+      font-weight:900;
+    }
+
+    .feature-card{grid-column:span 6;min-height:285px;}
+    .feature-tag{
+      display:inline-block;
+      color:var(--primary);
+      background:#eef4ff;
+      border:1px solid #d9e6ff;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.78rem;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+    .feature-card h3{margin:0 0 10px;font-size:1.55rem;letter-spacing:-.03em;}
+    .feature-card p{margin:0;color:var(--muted);}
+    .feature-meta{
+      display:flex;flex-wrap:wrap;gap:8px;
+      margin-top:22px;
+    }
+    .chip{
+      padding:6px 9px;border-radius:9px;
+      background:#f3f6fa;color:#506076;
+      border:1px solid #e1e8f1;
+      font-size:.78rem;font-weight:700;
+    }
+
+    .project-card{grid-column:span 4;min-height:250px;}
+    .project-card h3{margin:18px 0 8px;font-size:1.18rem;}
+    .project-card p{margin:0;color:var(--muted);font-size:.94rem;}
+    .project-link{
+      display:inline-block;
+      margin-top:18px;
+      color:var(--primary);
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    .about-panel{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:22px;
+    }
+    .about-block{
+      background:linear-gradient(145deg,#182230,#273447);
+      color:#fff;
+      border-radius:28px;
+      padding:34px;
+      min-height:300px;
+    }
+    .about-block p{color:#cfd8e6;}
+    .about-content{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:34px;
+    }
+    .about-content p{color:var(--muted);}
+    .about-content strong{color:var(--text);}
+
+    .cta{
+      margin:50px 0 90px;
+      padding:44px;
+      border-radius:30px;
+      color:#fff;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.16), transparent 26%),
+        linear-gradient(135deg,#173c9b,#6f45dc);
+      box-shadow:var(--shadow);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:28px;
+    }
+    .cta h2{margin:0 0 8px;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.04em;}
+    .cta p{margin:0;color:#dce6ff;max-width:690px;}
+    .cta .btn{background:#fff;border:0;color:#173c9b;white-space:nowrap;}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 44px;
+      color:#6b7789;
+      font-size:.9rem;
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:900px){
+      .nav-links a:not(.nav-cta){display:none;}
+      .hero{grid-template-columns:1fr;min-height:auto;padding-top:70px;}
+      .hero-card{max-width:620px;}
+      .research-card{grid-column:span 6;}
+      .feature-card{grid-column:span 12;}
+      .project-card{grid-column:span 12;}
+      .about-panel{grid-template-columns:1fr;}
+      .cta{align-items:flex-start;flex-direction:column;}
+    }
+
+    @media (max-width:580px){
+      .wrap{width:min(var(--max),calc(100% - 26px));}
+      nav{height:66px;}
+      h1{font-size:3.15rem;}
+      .research-card{grid-column:span 12;}
+      .hero{padding:58px 0 44px;gap:34px;}
+      section{padding:64px 0;}
+      .section-head{display:block;}
+      .section-note{margin-top:14px;}
+      .card,.about-block,.about-content{padding:22px;}
+      .cta{padding:28px;}
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Wei Chen</h1>
+  <div class="nav-shell">
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#top">Wei Chen</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a class="nav-cta" href="https://github.com/WeiChen-kust" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-    <h2>AI Researcher & Python Developer</h2>
+  <main id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> AI Research · Education · Engineering</div>
 
-    <p>
-        Artificial Intelligence · Natural Language Processing ·
-        Multimodal AI · Python Automation · Web Scraping
-    </p>
+          <h1>
+            Wei Chen<br />
+            <span class="gradient-text">AI Researcher &<br />Python Developer</span>
+          </h1>
 
-    <h3>About Me</h3>
+          <p>
+            I work on artificial intelligence, natural language processing, multimodal AI,
+            knowledge graphs and neuro-symbolic reasoning, while building practical Python
+            automation, web scraping and data workflows.
+          </p>
 
-    <p>
-        Welcome to my personal website.
-        I am interested in artificial intelligence,
-        machine learning, natural language processing,
-        multimodal AI and Python automation.
-    </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#research">View Research</a>
+            <a class="btn" href="#projects">Explore Projects</a>
+            <a class="btn" href="https://github.com/WeiChen-kust" target="_blank" rel="noreferrer">GitHub Profile ↗</a>
+          </div>
+        </div>
 
-    <h3>Research</h3>
+        <aside class="hero-card">
+          <div class="avatar">WC</div>
+          <h2>Wei Chen</h2>
+          <p class="role">AI Researcher · Lecturer · Python Developer</p>
+          <ul class="mini-list">
+            <li><span></span><div>Kunming University of Science and Technology</div></li>
+            <li><span></span><div>Multimodal AI, NLP, Knowledge Graphs & Neuro-Symbolic AI</div></li>
+            <li><span></span><div>Python Automation, Web Scraping & Data Analysis</div></li>
+            <li><span></span><div>Academic research and industry-oriented AI workflows</div></li>
+          </ul>
+        </aside>
+      </section>
+    </div>
 
-    <ul>
-        <li>Artificial Intelligence</li>
-        <li>Natural Language Processing</li>
-        <li>Multimodal Large Language Models</li>
-        <li>Knowledge Graphs</li>
-        <li>Neuro-Symbolic AI</li>
-    </ul>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">Research depth, practical engineering.</h2>
+          </div>
+          <div class="section-note">
+            My work connects academic AI research with practical software development,
+            data automation and reproducible technical workflows.
+          </div>
+        </div>
 
-    <h3>Projects</h3>
+        <div class="about-panel">
+          <div class="about-block">
+            <h2>What I focus on</h2>
+            <p>
+              Building intelligent systems that are not only capable, but also more
+              structured, traceable and useful in real research and engineering settings.
+            </p>
+          </div>
 
-    <ul>
-        <li>M2PO</li>
-        <li>NS-M2PO</li>
-        <li>Python Automation</li>
-        <li>Web Scraping</li>
-        <li>Data Analysis</li>
-    </ul>
+          <div class="about-content">
+            <p>
+              I am an AI researcher and lecturer with interests spanning
+              <strong>multimodal large language models</strong>,
+              <strong>natural language processing</strong>,
+              <strong>knowledge graphs</strong>,
+              <strong>machine learning</strong> and
+              <strong>neuro-symbolic reasoning</strong>.
+            </p>
+            <p>
+              In parallel, I build practical Python solutions for
+              <strong>web scraping</strong>, <strong>browser automation</strong>,
+              <strong>Excel/CSV processing</strong>, <strong>data analysis</strong> and
+              <strong>LLM-powered workflows</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h3>Contact</h3>
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Research Areas</div>
+            <h2 class="section-title">Core research interests</h2>
+          </div>
+          <div class="section-note">
+            Current interests center on trustworthy and knowledge-aware reasoning
+            across language, vision and structured knowledge.
+          </div>
+        </div>
 
-    <p>GitHub: WeiChen-kust</p>
+        <div class="grid">
+          <article class="card research-card">
+            <div class="icon">01</div>
+            <h3>Multimodal AI</h3>
+            <p>Vision-language models, cross-modal reasoning and multimodal representation learning.</p>
+          </article>
 
+          <article class="card research-card">
+            <div class="icon">02</div>
+            <h3>NLP</h3>
+            <p>Natural language understanding, information extraction and domain-aware language systems.</p>
+          </article>
+
+          <article class="card research-card">
+            <div class="icon">03</div>
+            <h3>Knowledge Graphs</h3>
+            <p>Knowledge grounding, structured retrieval and knowledge-enhanced reasoning.</p>
+          </article>
+
+          <article class="card research-card">
+            <div class="icon">04</div>
+            <h3>Neuro-Symbolic AI</h3>
+            <p>Combining neural generation with symbolic constraints for more reliable reasoning.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Featured Research</div>
+            <h2 class="section-title">Selected research directions</h2>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card feature-card">
+            <span class="feature-tag">Multimodal Clinical AI</span>
+            <h3>M2PO</h3>
+            <p>
+              Macro-Micro Preference Optimization for cross-scale clinical reasoning in
+              multimodal large language models, with emphasis on preference alignment,
+              structured reasoning and clinical consistency.
+            </p>
+            <div class="feature-meta">
+              <span class="chip">Multimodal LLM</span>
+              <span class="chip">Preference Optimization</span>
+              <span class="chip">Cross-Scale Reasoning</span>
+              <span class="chip">Clinical AI</span>
+            </div>
+          </article>
+
+          <article class="card feature-card">
+            <span class="feature-tag">Knowledge-Aware Reasoning</span>
+            <h3>NS-M2PO</h3>
+            <p>
+              A neuro-symbolic extension that introduces external knowledge and
+              consistency constraints to strengthen factual grounding and reduce
+              hallucination in cross-scale reasoning.
+            </p>
+            <div class="feature-meta">
+              <span class="chip">Neuro-Symbolic AI</span>
+              <span class="chip">Knowledge Graph</span>
+              <span class="chip">PrimeKG</span>
+              <span class="chip">Faithful Reasoning</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Projects</div>
+            <h2 class="section-title">Research meets implementation</h2>
+          </div>
+          <div class="section-note">
+            A selection of practical Python, automation and AI workflows designed for
+            real-world data and research tasks.
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card project-card">
+            <div class="icon">PY</div>
+            <h3>PriceWatch AI</h3>
+            <p>
+              A Python-based monitoring workflow combining web scraping, SQLite,
+              structured data export and AI-assisted summaries.
+            </p>
+            <a class="project-link" href="#contact">Case study coming soon →</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="icon">WS</div>
+            <h3>Web Scraping & Data Pipelines</h3>
+            <p>
+              Reliable scraping and browser automation workflows using Python,
+              Playwright, Selenium and structured Excel/CSV output.
+            </p>
+            <a class="project-link" href="#contact">Project details coming soon →</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="icon">AI</div>
+            <h3>Python & LLM Automation</h3>
+            <p>
+              AI-enabled workflows for document processing, information extraction,
+              reporting, research automation and reusable data pipelines.
+            </p>
+            <a class="project-link" href="#contact">Project details coming soon →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Publications</div>
+            <h2 class="section-title">Research output</h2>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Selected publications and ongoing work</h3>
+          <p style="margin-bottom:0;color:var(--muted);">
+            This section will host selected papers, project pages, preprints and links to
+            academic profiles. It is intentionally kept concise on the homepage; a
+            dedicated publications page can be added next.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap" id="contact">
+      <div class="cta">
+        <div>
+          <h2>Research, collaboration or technical projects?</h2>
+          <p>
+            I am interested in academic collaboration and practical AI / Python projects
+            involving automation, data extraction, NLP and intelligent workflows.
+          </p>
+        </div>
+        <a class="btn" href="https://github.com/WeiChen-kust" target="_blank" rel="noreferrer">Visit GitHub ↗</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© 2026 Wei Chen. All rights reserved.</div>
+      <div>
+        <a href="https://github.com/WeiChen-kust" target="_blank" rel="noreferrer">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
